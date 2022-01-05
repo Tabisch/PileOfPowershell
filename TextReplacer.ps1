@@ -1,9 +1,9 @@
 ﻿Function Replace-Text(){
 Param(
-[String]$Pfad
+[String]$path
 )
 
-$fileen = Get-ChildItem -Path $Pfad -Recurse -Filter "*.xls"
+$fileen = Get-ChildItem -Path $path -Recurse -Filter "*.xls"
 
 Write-host "Get-ChildItem completet"
 
