@@ -3,7 +3,7 @@ Param(
 [String]$path
 )
 
-$fileen = Get-ChildItem -Path $path -Recurse -Filter "*.xls"
+$files = Get-ChildItem -Path $path -Recurse -Filter "*.xls"
 
 Write-host "Get-ChildItem completet"
 
