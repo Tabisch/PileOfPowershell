@@ -1,36 +1,35 @@
-﻿Function Replace-Text(){
-Param(
-[String]$path
+param(
+[parameter(Mandatory=$true)]
+[string[]]
+$paths
 )
 
-$files = Get-ChildItem -Path $path -Recurse -Filter "*.xls"
+Function Replace-Text{
+    Param(
+    [String]$path
+    )
 
-Write-host "Get-ChildItem completet"
+    $files = Get-ChildItem -Path $path -Recurse -Filter "*.xls"
 
-foreach($file in $files)
-{
-    Write-Host "Loading $($file.FullName)"
+    Write-host "Get-ChildItem completet"
 
-    $lastwrite = $file.LastWriteTime
+    foreach($file in $files)
+    {
+        Write-Host "Loading $($file.FullName)"
+
+        $lastwrite = $file.LastWriteTime
      
-    $FileContent = Get-Content -Path $file.FullName
+        $FileContent = Get-Content -Path $file.FullName
 
-    $FileContent = $FileContent.Replace("OldText","NewText")
+        $FileContent = $FileContent.Replace("OldText","NewText")
 
-    Write-Host "Setting Content for $($file.FullName)"
+        Write-Host "Setting Content for $($file.FullName)"
 
-    $FileContent | Set-Content -Path $file.FullName
+        $FileContent | Set-Content -Path $file.FullName
 
-    $file.LastWriteTime = $lastwrite
+        $file.LastWriteTime = $lastwrite
+    }
 }
-
-}
-
-$paths = @(
-"",
-""
-)
-
 
 foreach($path in $paths)
 {
