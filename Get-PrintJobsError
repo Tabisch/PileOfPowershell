@@ -1,0 +1,1 @@
+Get-Printer | Get-PrintJob | Where-Object{ $_.JobStatus.HasFlag([Microsoft.PowerShell.Cmdletization.GeneratedTypes.PrintJob.JobStatus]::Error) }
